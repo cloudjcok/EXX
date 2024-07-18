@@ -1,0 +1,324 @@
+
+// cuantas veces aparce un elemento en una matriz:
+
+function contElement(array, element) {
+    let cont = 0
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === element) {
+            cont++
+        }
+    }
+    return cont
+}
+let matriz1 = [
+    1, 2, 3,
+    4, 5, 3,
+    7, 8, 9 
+]
+let elementobus = 3
+let count = contElement(matriz1, elementobus)
+console.log(`El elemento ${elementobus} se repite: ${count} veces.`);
+
+// mostrar elementos de una matriz
+let matrix2 = [
+    2, 4, 6,
+    8, 2, 4,
+    6, 8, 2
+]
+console.log(matrix2);
+
+// Multiplicar por escalar 
+let matrix3 =[
+    [6, 4, 2],
+    [2, 4, 6],
+    [1, 2, 3]
+]
+let escalar = 2
+for (let i = 0; i < matrix3.length; i++) {
+    for (let j = 0; j < matrix3[i].length; j++) {
+        matrix3[i][j] *= escalar        
+    }    
+}
+console.log(matrix3);
+
+// 4. Crea dos matrices de 2x2 y calcula la +/-/%/* de ambas matrices.
+let matrixx1 =[
+    [1, 2, 3],
+    [4, 5, 6]
+]
+let matrixx2 =[
+    [2, 4, 6],
+    [8, 2, 4]
+]
+function sumaMatriz(matrixA,matrixB) {
+    return matrixA.map((fila, i)=>
+    fila.map((valor, j)=>
+    valor + matrixB[i][j]))
+}
+let sumarMatriz= sumaMatriz(matrixx1,matrixx2)
+console.log(sumarMatriz);
+
+// 5. Encuentra el mayor elemento en una matriz.
+
+let matrix4 = [
+    [33, 3456, 22],
+    [21, 45, 77],
+    [26999, 4, -2]
+]
+let maxElement= matrix4[0][0]
+for (let i = 0; i < matrix4.length; i++) {
+    for (let j = 0; j < matrix4[i].length; j++) {   
+        if (matrix4[i][j]> maxElement) {
+            maxElement= matrix4[i][j]
+        }     
+    }    
+}
+console.log(maxElement);
+
+// Crea una función que busque un elemento específico en una matriz.
+function searhElemnt(matrix, buscado) {
+    for (let i = 0; i < matrix.length; i++) {
+        if (matrix[i] === buscado) {
+            return true
+        }
+    }
+    return false
+}
+let matrixbuscar = [1, 2, 3, 4, 5, 6, 7]
+let elementbuscar = 5
+console.log(searhElemnt(matrixbuscar, elementbuscar));
+
+// 7. Elimina un elemento en una posición específica de la matriz.
+let matrizEliminar = [
+    [34, 26, 55],
+    [21, 34, 89],
+    [23, 56, 78]
+]
+matrizEliminar[1].splice(0,1)
+console.log(matrizEliminar);
+
+// Intenta dividir dos números, captura la excepción si se intenta dividir por cero.
+function dividir(a, b) {
+    if (b === 0) {
+        throw new Error(` NO SE PUEDE DIVIDIR PARA CERO`)
+    } else {
+        return a / b
+    }
+}
+console.log(dividir(25, 10))
+
+try {
+    console.log(dividir(25, 0));
+} catch (error) {
+    console.log(`ERROR CAPTURADO`, error.message);
+}
+
+// 9. Accede a una propiedad que no existe en un objeto, captura la excepción.
+let obj = {
+    nombre: "Jorge",
+    edad: 20
+}
+function accederPropiedad(obj, propy) {
+    let value = obj[propy];
+    if (value === undefined) {
+        throw new Error(`PROPIEDAD NO EXISTENTE`)
+    } else {
+        return value
+    }
+}
+console.log(accederPropiedad(obj, "nombre"));
+try {
+    console.log(accederPropiedad(obj, "pais"));
+} catch (error) {
+    console.log(`ERROR CAPTURADO`, error.message)
+}
+
+// 10. Crea una función que espera dos argumentos y llámala con solo uno. Captura la excepción.
+function sumar(a, b) {
+    if (a === undefined || b === undefined) {
+        throw new Error(`FALTA UN ARGUMENTO!!`)
+    } else {
+        return a + b
+    }
+}
+try {
+    console.log(sumar(4));
+} catch (error) {
+    console.log(`ERROR CAPTURADO`, error.message);
+}
+
+// 11. Intenta crear un objeto con una propiedad llamada class, captura la excepción.
+try {
+    const obj2 = {
+        class: "mi clase",
+        name: "Jorge",
+        age: 30
+    };
+
+    // aqui fuerzo el error,ya q class es una propiedad valida
+    throw new Error("Simulación de error al crear el objeto");
+
+    console.log(obj2);
+} catch (error) {
+    console.log('Error capturado:', error.message);
+}
+
+// 12. Intenta acceder a un índice que está fuera del rango de un arreglo
+array = [2, 4, 6, 8, 10, 12]
+function fueraRango(array, i) {
+    if (i< 0 || i >= array.length) {
+        throw new Error(`INDICE FUERA DE RANGO`)
+    } else {
+        return array[i]
+    }
+}
+try {
+    console.log(fueraRango(array, 2));
+    console.log(fueraRango(array, 20));
+} catch (error) {
+    console.log(`ERROR CAPTURADO`, error.message);
+}
+
+// 15. Crea una función que sume todos los elementos de cada fila de una matriz y devuelva un arreglo con los resultados.
+function sumarFilas(matrizz) {
+    let resultados = [];
+    for (let fila of matrizz) {
+        let suma = 0;
+        for (let elemento of fila) {
+            suma += elemento;
+        }
+        resultados.push(suma)
+    }
+    return resultados
+}
+let matrizz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+let resultados = sumarFilas(matrizz)
+console.log(resultados);
+
+// 16. Encuentra el mayor elemento por columna en una matriz.
+function maxElementColumn(matrix) {
+    return matrix[0].map((_, colIndex) => 
+        Math.max(...matrix.map(row => row[colIndex]))
+    );
+}
+
+// Ejemplo de uso
+let matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+
+let maximosPorColumna = maxElementColumn(matriz);
+console.log("El mayor elemento por columna es:", maximosPorColumna);
+
+//17. Crea una función que sustituya todos los valores pares de una matriz por el valor -1.
+function sustituirParesPorMenosUno(matriz) {
+    return matriz.map(fila =>
+        fila.map(elemento =>
+            elemento % 2 === 0 ? -1 : elemento
+        )
+    );
+}
+
+const matrizP = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+
+const matrizModificada = sustituirParesPorMenosUno(matrizP);
+console.log("Matriz modificada:", matrizModificada);
+ 
+
+
+// CALCULAR PROMEDIO DE FILAS.
+function calcularPromedioPorFila(matriz) {
+    const promedios = [];
+
+    for (let fila of matriz) {
+        let suma = 0;
+        for (let elemento of fila) {
+            suma += elemento;
+        }
+        const promedio = suma / fila.length;
+        promedios.push(promedio);
+    }
+
+    return promedios;
+}
+
+const matrizPromedioFilas = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+
+const promedios = calcularPromedioPorFila(matrizPromedioFilas);
+console.log("Promedio de cada fila:", promedios);
+
+///CALCULAR PROMEDIO DE COLUMNAS
+ function calcularPromedioPorColumna(matriz) {
+    return matriz[0].map((_, columnIndex) => {
+        let sumaColumna = 0;
+        matriz.forEach(fila => {
+            sumaColumna += fila[columnIndex];
+        });
+        return sumaColumna / matriz.length;
+    });
+}
+
+const matrizPromedio = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+
+const promediosColumnas = calcularPromedioPorColumna(matrizPromedio);
+console.log("Promedio de cada columna:", promediosColumnas);
+
+
+/////////////////////////////////////////
+
+function calcularDeterminante(matriz) {
+    if (matriz.length !== 2 || matriz[0].length !== 2) {
+        throw new Error("La matriz debe ser de tamaño 2x2 para calcular la determinante.");
+    }
+    let  det = matriz[0][0] * matriz[1][1] - matriz[0][1] * matriz[1][0];
+    return det;
+}
+
+ let matriz2x2 = [
+    [4, 3,],
+    [9, -5]
+];
+
+let determinante = calcularDeterminante(matriz2x2);
+console.log("Determinante de la matriz 2x2:", determinante);
+
+// MULTIPLICACION DE MATRICESS
+let matrizz1 = [
+    [2, 0,  1],
+    [3, 1,  1],
+    [3, 1,  1]
+];
+let matrizz2 = [
+    [5,  2, 3],
+    [1,  3, 3],
+    [0,  4, 3]
+];
+
+function multiplicarMatrices(matrixA, matrixB) {
+    return matrixA.map((fila, i) => 
+        matrixB[0].map((_, j) => 
+            fila.reduce((suma, _, k) => suma + matrixA[i][k] * matrixB[k][j], 0)
+        )
+    );
+}
+
+let resultadoMultiplicacion = multiplicarMatrices(matrizz1, matrizz2);
+console.log(resultadoMultiplicacion);
